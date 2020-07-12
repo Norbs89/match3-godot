@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://art/Match 3 Assets 3/Match 3 Assets/UI/Bottom UI v 2.png" type="Texture" id=1]
+[ext_resource path="res://art/Match 3 Assets 3/Match 3 Assets/UI/Buttons/Pause Button.png" type="Texture" id=2]
+[ext_resource path="res://art/Match 3 Assets 3/Match 3 Assets/UI/Buttons/Mallet Button.png" type="Texture" id=3]
+[ext_resource path="res://art/Match 3 Assets 3/Match 3 Assets/UI/Buttons/Make Color Bomb Button.png" type="Texture" id=4]
+[ext_resource path="res://art/Match 3 Assets 3/Match 3 Assets/UI/Buttons/Plus 5 Moves Button.png" type="Texture" id=5]
+[ext_resource path="res://scripts/bottomUI.gd" type="Script" id=6]
+[ext_resource path="res://scripts/booster.gd" type="Script" id=7]
+[ext_resource path="res://scripts/boosterManager.gd" type="Script" id=8]
+
+[node name="bottomUI" type="TextureRect"]
+margin_top = 928.0
+margin_right = 576.0
+margin_bottom = 1020.0
+texture = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 20.0
+margin_right = 557.0
+margin_bottom = 64.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = -50
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_top = -50.0
+margin_right = 537.0
+margin_bottom = 64.0
+custom_constants/separation = 36
+alignment = 1
+script = ExtResource( 8 )
+
+[node name="pause" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+margin_left = 14.0
+margin_right = 114.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="booster1" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=[
+"Boosters",
+]]
+margin_left = 150.0
+margin_right = 250.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+color_bomb_texture = ExtResource( 4 )
+add_moves_texture = ExtResource( 5 )
+destroy_piece_texture = ExtResource( 3 )
+
+[node name="booster2" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=[
+"Boosters",
+]]
+margin_left = 286.0
+margin_right = 386.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+color_bomb_texture = ExtResource( 4 )
+add_moves_texture = ExtResource( 5 )
+destroy_piece_texture = ExtResource( 3 )
+
+[node name="booster3" type="TextureButton" parent="MarginContainer/HBoxContainer" groups=[
+"Boosters",
+]]
+margin_left = 422.0
+margin_right = 522.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+color_bomb_texture = ExtResource( 4 )
+add_moves_texture = ExtResource( 5 )
+destroy_piece_texture = ExtResource( 3 )
+[connection signal="pressed" from="MarginContainer/HBoxContainer/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/booster1" to="." method="_on_booster1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/booster2" to="." method="_on_booster2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/booster3" to="." method="_on_booster3_pressed"]
